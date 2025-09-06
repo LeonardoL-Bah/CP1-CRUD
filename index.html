@@ -12,11 +12,9 @@
     </header>
 
     <form class="cardForm" id="form" onsubmit="event.preventDefault(); salvar();">
-        <label for="name">Digite o nome da jogadora</label><br>
-        <textarea id="" rows="4" cols="50"></textarea><br>
-        <textarea id="nome" rows="1" cols="50"></textarea><br>
-        <label for="posicao">Posição:</label>
-        <label for="posicao">Posição:</label>
+            <label for="nome">Digite o nome da jogadora</label><br>
+        <input type="text" id="nome"><br>
+            <label for="posicao">Posição:</label>
         <select id="posicao">
             <option value="Goleiro">Goleiro</option>
             <option value="Zagueira">Zagueira</option>
@@ -24,15 +22,15 @@
             <option value="Atacante">Atacante</option>
         </select><br>
             <label for="clube">Digite o Clube da jogadora</label><br>
-        <textarea id="clube" rows="1" cols="50"></textarea><br>
+        <input type="text" id="clube"><br>
             <label for="foto">Insira uma imagem (URL):</label><br>
         <input type="text" id="foto" placeholder="Insira a URL aqui"><br>
             <label for="gols">Gols:</label><br>
-        <input type="number" id="gols"><br>
+        <input type="number" id="gols" min="0" value="0"><br>
             <label for="assistencias">Assistências:</label><br>
-        <input type="number" id="assistencias"><br>
+        <input type="number" id="assistencias" min="0" value="0"><br>
             <label for="jogos">Jogos:</label><br>
-        <input type="number" id="jogos"><br>
+        <input type="number" id="jogos" min="0" value="0"><br>
         <button type="submit">Postar</button>
         </select><br>
     </form>
@@ -44,7 +42,7 @@
         <button onclick="ordenar('nome')">Ordenar por Nome</button>
         <button onclick="ordenar('posicao')">Ordenar por Posição</button>
     </div>
-    
+
     <section class="container" id="lista"></section>
 
     <script src="script.js"></script>
