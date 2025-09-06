@@ -11,23 +11,41 @@
         <h1 class="">Base de Dados das Jogadoras</h1>
     </header>
 
-    <form class="cardForm">
-        <i class=""></i> <label for="">Digite o nome da jogadora</label><br>
+    <form class="cardForm" id="form" onsubmit="event.preventDefault(); salvar();">
+        <label for="name">Digite o nome da jogadora</label><br>
         <textarea id="" rows="4" cols="50"></textarea><br>
-        <i class=""></i> <label for="">Posição:</label>
-        <select id="">
+        <textarea id="nome" rows="1" cols="50"></textarea><br>
+        <label for="posicao">Posição:</label>
+        <label for="posicao">Posição:</label>
+        <select id="posicao">
             <option value="Goleiro">Goleiro</option>
-            <option value="Zagueiro">Zagueiro</option>
+            <option value="Zagueira">Zagueira</option>
             <option value="Meio-campo">Meio-campo</option>
             <option value="Atacante">Atacante</option>
         </select><br>
-        <i class=""></i> <label for="">Digite o Clube da jogadora</label><br>
-        <textarea id="" rows="1" cols="50"></textarea><br>
-        <i class="cardImage" ></i> <label for="cardImage">Insira uma imagem (URL):</label><br>
-        <input type="text" id="cardImage" placeholder="Insira a url aqui"><br>
-        <button type="submit"><i class="cardPost"></i> Postar</button>
+            <label for="clube">Digite o Clube da jogadora</label><br>
+        <textarea id="clube" rows="1" cols="50"></textarea><br>
+            <label for="foto">Insira uma imagem (URL):</label><br>
+        <input type="text" id="foto" placeholder="Insira a URL aqui"><br>
+            <label for="gols">Gols:</label><br>
+        <input type="number" id="gols"><br>
+            <label for="assistencias">Assistências:</label><br>
+        <input type="number" id="assistencias"><br>
+            <label for="jogos">Jogos:</label><br>
+        <input type="number" id="jogos"><br>
+        <button type="submit">Postar</button>
         </select><br>
     </form>
+    <div class="controls">
+        <input type="text" id="busca" placeholder="Buscar por nome ou posição" oninput="render()">
+        <select id="filtro" onchange="render()">
+        <option value="">Todos os clubes</option>
+        </select>
+        <button onclick="ordenar('nome')">Ordenar por Nome</button>
+        <button onclick="ordenar('posicao')">Ordenar por Posição</button>
+    </div>
+    
+    <section class="container" id="lista"></section>
 
     <script src="script.js"></script>
 </body>
