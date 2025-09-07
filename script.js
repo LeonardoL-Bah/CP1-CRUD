@@ -53,22 +53,26 @@ let jogadoras = JSON.parse(localStorage.getItem('jogadoras')) || [
 
 window.onload = function() {
     loadJogadoras();
+    populateClubeFilter();
     displayJogadoras();
 
     document.getElementById('form').addEventListener('submit', addJogadora);
     document.getElementById('lista').addEventListener('click', handleJogadoraListClick);
-}
 
-function handleJogadoraListClick(event) {
-    const clickedElement = event.target.closest('button');
-    if (!clickedElement) return;
+    document.getElementById('filtroNome').addEventListener('input', filterJogadoras);
+    document.getElementById('filtroClube').addEventListener('change', filterJogadoras);
 
-    const action = clickedElement.dataset.action;
-    const index = clickedElement.dataset.index;
+    document.getElementById('ordenarNome').addEventListener('click', () => {
+        jogadoras.sort((a,b) => a.nome.localeCompare(b.nome));
+        saveJogadoras();
+        filterJogadoras();
+    });
 
-    if (action === "edit") editJogadora(index);
-    else if (action === "delete") deleteJogadora(index);
-    else if (action === "favorite") toggleFavorite(index);
+    document.getElementById('ordenarClube').addEventListener('click', () => {
+        jogadoras.sort((a,b) => a.clube.localeCompare(b.clube));
+        saveJogadoras();
+        filterJogadoras();
+    });
 }
 
 function saveJogadoras() {
@@ -105,7 +109,7 @@ function addJogadora(event) {
 }
 
 function displayJogadoras() {
-    const list = document.getElementById('lista'); // era 'jogadoraList'
+    const list = document.getElementById('lista');
     list.innerHTML = '';
     jogadoras.forEach((j, index) => {
         const card = document.createElement('div');
@@ -144,6 +148,53 @@ function deleteJogadora(index) {
     if(confirm("Deseja realmente apagar esta jogadora?")){
         jogadoras.splice(index,1);
         saveJogadoras();
+        populateClubeFilter();
         displayJogadoras();
     }
+}
+
+function toggleFavorite(index){
+    jogadoras[index].favorita = !jogadoras[index].favorita;
+    saveJogadoras();
+    filterJogadoras();
+}
+
+function filterJogadoras(){
+    const nomeFiltro = document.getElementById('filtroNome').value.toLowerCase();
+    const clubeFiltro = document.getElementById('filtroClube').value.toLowerCase();
+
+    const listaFiltrada = jogadoras.filter(j => {
+        const nomeMatch = j.nome.toLowerCase().includes(nomeFiltro);
+        const clubeMatch = clubeFiltro === "" || j.clube.toLowerCase() === clubeFiltro;
+        return nomeMatch && clubeMatch;
+    });
+
+    displayJogadoras(listaFiltrada);
+}
+
+function handleJogadoraListClick(event){
+    const clicked = event.target.closest('button, .favorite');
+    if(!clicked) return;
+
+    if(clicked.classList.contains('favorite')){
+        const index = clicked.dataset.index;
+        toggleFavorite(index);
+    } else {
+        const action = clicked.dataset.action;
+        const index = clicked.dataset.index;
+        if(action === "edit") editJogadora(index);
+        else if(action === "delete") deleteJogadora(index);
+    }
+}
+
+function populateClubeFilter(){
+    const select = document.getElementById('filtroClube');
+    const clubes = [...new Set(jogadoras.map(j => j.clube))];
+    select.innerHTML = '<option value="">Todos os clubes</option>';
+    clubes.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = c;
+        select.appendChild(opt);
+    });
 }

@@ -41,19 +41,21 @@
         <button type="submit">Postar</button>
     </form>
 
-    <div id="lista"></div>
+    
 
     <div class="controls">
-        <input type="text" id="busca" placeholder="Buscar por nome ou posição" oninput="render()">
-        <select id="filtro" onchange="render()">
-        <option value="">Todos os clubes</option>
+        <input type="text" id="filtroNome" placeholder="Buscar por nome">
+        <select id="filtroClube">
+            <option value="">Todos os clubes</option>
         </select>
-        <button onclick="ordenar('nome')">Ordenar por Nome</button>
-        <button onclick="ordenar('posicao')">Ordenar por Posição</button>
+        <button id="ordenarNome">Ordenar por Nome</button>
+        <button id="ordenarClube">Ordenar por Clube</button>
     </div>
 
     <section class="container" id="lista"></section>
 
+    <div id="lista"></div>
+    
     <script src="script.js"></script>
 </body>
 </html>
