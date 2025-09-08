@@ -3,4 +3,4 @@
 - [Leonardo Lopes Pereira](https://github.com/LeonardoL-Bah)
 - [Matheus Brasil Borges Sevilha Angelotti](https://github.com/MathBra17)
 
-GitHub Pages: 
+GitHub Pages: https://leonardol-bah.github.io/CP1-CRUD/
