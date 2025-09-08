@@ -1,0 +1,201 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 20px;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+header {
+	margin: 20px 0;
+}
+
+h1 {
+	color: #333;
+}
+
+.cardForm {
+	background: #fff;
+	padding: 25px;
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+	margin: 0 auto 30px auto;
+	max-width: 450px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	text-align: left;
+}
+
+.cardForm label {
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 5px;
+	display: block;
+}
+
+.cardForm {
+	background: #fff;
+	padding: 25px;
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+	margin: 0 auto 30px auto;
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	text-align: left;
+}
+
+.cardForm textarea,
+.cardForm input,
+.cardForm select {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	font-size: 14px;
+	box-sizing: border-box;
+}
+
+.cardForm button {
+	background-color: #5A1884;
+	color: #fff;
+	border: none;
+	padding: 10px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	transition: background 0.3s;
+}
+
+
+
+.cardForm button:hover {
+	background-color: #8763C5;
+}
+
+.controls {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 30px;
+	flex-wrap: wrap;
+}
+
+.controls input,
+.controls select,
+.controls button {
+	padding: 10px;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	font-size: 14px;
+}
+
+.controls button {
+	background: #5A1884;
+	color: #fff;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.controls button:hover {
+	background: #8763C5;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+#lista {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 20px;
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+.card-jogadora {
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+	padding: 15px;
+	text-align: center;
+	position: relative;
+	transition: transform 0.2s;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.card-jogadora:hover {
+	transform: scale(1.02);
+}
+
+.card-jogadora img {
+	width: 100%;
+	height: 180px;
+	object-fit: cover;
+	border-radius: 8px;
+	margin-bottom: 10px;
+}
+
+.card-jogadora h3 {
+	margin: 10px 0 5px;
+	font-size: 18px;
+	color: #222;
+}
+
+.card-jogadora p {
+	margin: 4px 0;
+	font-size: 14px;
+	color: #555;
+}
+
+.card-jogadora button {
+	margin: 5px;
+	padding: 6px 10px;
+	border: none;
+	border-radius: 6px;
+	font-size: 13px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.card-jogadora button[data-action="edit"] {
+	background: #ffc107;
+	color: #000;
+}
+
+.card-jogadora button[data-action="edit"]:hover {
+	background: #e0a800;
+}
+
+.card-jogadora button[data-action="delete"] {
+	background: #dc3545;
+	color: #fff;
+}
+
+.card-jogadora button[data-action="delete"]:hover {
+	background: #b52a37;
+}
+
+.favorite {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 24px;
+	cursor: pointer;
+	color: #bbb;
+	transition: color 0.2s;
+	z-index: 10;
+}
+
+.favorite.active {
+	color: gold;
+}
